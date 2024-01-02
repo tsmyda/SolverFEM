@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AppController">
+    <center>
+        <LineChart fx:id="plot" animated="false" horizontalZeroLineVisible="false" legendVisible="false" verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
+            <xAxis>
+                <NumberAxis autoRanging="false" label="x" lowerBound="0.0" side="BOTTOM" tickUnit="0.1" upperBound="3.0" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis autoRanging="false" label="Φ(x)" lowerBound="3.9" side="LEFT" tickUnit="0.1" upperBound="5.1" />
+            </yAxis>
+        </LineChart>
+    </center>
+   <bottom>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+               <Label alignment="BOTTOM_CENTER" prefHeight="33.0" prefWidth="68.0" text="Enter n: ">
+                   <VBox.margin>
+                       <Insets left="8.0" />
+                   </VBox.margin>
+               </Label>
+            <HBox alignment="TOP_CENTER" prefHeight="45.0" prefWidth="800.0">
+               <children>
+                  <TextField fx:id="fieldN" />
+                  <Button mnemonicParsing="false" onAction="#buttonAction" text="Go!" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>
