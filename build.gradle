@@ -16,7 +16,7 @@ repositories {
 }
 
 application {
-    getMainClass().set('rrir.mes.Main')
+    getMainClass().set('org.example.Main')
 }
 
 dependencies {
