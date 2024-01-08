@@ -19,18 +19,15 @@ public class Calculator {
     private Array2DRowRealMatrix GenerateMatrixB(int n, double h) {
         Array2DRowRealMatrix B =  new Array2DRowRealMatrix(n-1, n-1);
         double a = Integrator.integrate(Integer.MAX_VALUE, x->1/pow(h, 2), 0,2*h);
-        double b = Integrator.integrate(Integer.MAX_VALUE, x->1/pow(h, 2), 0,h);
-        for (int row = 0; row<n-1; row++) {
-            for (int col = 0; col < n-1; col++) {
-                double val=0;
-                if (row == col) val = Integrator.integrate(Integer.MAX_VALUE, x->1/pow(h, 2), 0,2*h);
-                if (row == col + 1)
-                    val = Integrator.integrate(Integer.MAX_VALUE, x -> -1 / pow(h, 2), (col+1) * h, (row+1) * h);
-                if (col == row + 1)
-                    val = Integrator.integrate(Integer.MAX_VALUE, x -> -1 / pow(h, 2), (row+1) * h, (col+1) * h);
-                B.setEntry(row, col, val);
-            }
+        double b = Integrator.integrate(Integer.MAX_VALUE, x->-1/pow(h, 2), 0,h);
+//        double a = 2/h;
+//        double b = -1/h;
+        for (int i=0; i<n-2; i++) {
+            B.setEntry(i, i, a);
+            B.setEntry(i+1, i, b);
+            B.setEntry(i, i+1, b);
         }
+        B.setEntry(n-2, n-2, a);
         return B;
     }
     private boolean isIntersection(double a, double b, double c, double d) {
@@ -41,10 +38,6 @@ public class Calculator {
         ArrayRealVector L = new ArrayRealVector(n-1);
         for (int i=0; i<n-1; i++) {
             double value = 0;
-//            value += 1/3* Integrator.integrate(Integer.MAX_VALUE, x->1/h, h*i, h*(i+1));
-//            value += 1/3* Integrator.integrate(Integer.MAX_VALUE, x->-1/h, h*(i+1), h*(i+2));
-//            te calki wyzej sie zeruja jakby co okok ;)
-//            System.out.println(value);
             if(isIntersection(h*i, h*(i+1), 1, 2)) {
                 double lower = max(h*i, 1);
                 double upper = min(h*(i+1), 2);
