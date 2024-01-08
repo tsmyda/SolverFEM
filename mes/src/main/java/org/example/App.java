@@ -11,8 +11,8 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(this.getClass().getResource("/app.fxml"));
         primaryStage.setTitle("FEM");
-        primaryStage.setMinWidth(1000);
-        primaryStage.setMinHeight(800);
+        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(600);
 
         Scene scene = new Scene(root);
 

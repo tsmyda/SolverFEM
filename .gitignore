@@ -2,6 +2,9 @@
 **/build/
 !src/**/build/
 
+#Ignore docs directory
+docs/*
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
